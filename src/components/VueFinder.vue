@@ -179,6 +179,12 @@ emitter.on('vf-download', (url) => {
   emitter.emit('vf-modal-close');
 });
 
+const emit = defineEmits(['selected']);
+
+emitter.on('vf-nodes-selected', (items) => {
+  emit('selected', items);
+});
+
 onMounted(() => {
   emitter.emit('vf-fetch', {params: {q: 'index', adapter: (adapter.value)}});
 });
